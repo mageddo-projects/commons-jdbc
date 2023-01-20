@@ -1,6 +1,6 @@
 package com.mageddo.commons.jdbc;
 
-import com.mageddo.tobby.transaction.TransactionSynchronizationManager;
+import com.mageddo.commons.jdbc.transaction.TransactionSynchronizationManager;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

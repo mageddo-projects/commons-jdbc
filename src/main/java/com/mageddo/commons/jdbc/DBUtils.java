@@ -1,6 +1,6 @@
 package com.mageddo.commons.jdbc;
 
-import com.mageddo.tobby.internal.utils.Validator;
+import com.mageddo.commons.jdbc.internals.utils.Validator;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
