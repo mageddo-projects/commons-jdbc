@@ -8,5 +8,5 @@
 ## Build, Publish to Sonatype and Release
 
 ```bash
-./gradlew clean build publishToMavenCentral closeAndReleaseMavenCentralStagingRepository
+./gradlew clean release build publishToMavenCentral closeAndReleaseMavenCentralStagingRepository
 ```
