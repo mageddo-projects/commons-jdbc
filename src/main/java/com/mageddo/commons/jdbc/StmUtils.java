@@ -1,6 +1,6 @@
 package com.mageddo.commons.jdbc;
 
-import com.mageddo.tobby.internal.utils.Threads;
+import com.mageddo.commons.jdbc.internals.utils.Threads;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
