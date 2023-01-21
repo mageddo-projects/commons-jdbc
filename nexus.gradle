@@ -1,7 +1,6 @@
-println ("> :${project.name}")
+println("> :${project.name}")
 
 apply plugin: "maven-publish"
-apply plugin: "de.marcphilipp.nexus-publish" // upload artificates to sonatype
 
 task sourcesJar(type: Jar) {
   from sourceSets.main.allJava
@@ -27,12 +26,12 @@ publishing {
         name = project.name
         packaging = 'jar'
         description = project.description
-        url = "${projectPage}"
+        url = "${projectUrl}"
 
         scm {
-          connection = "${repositoryUrl}"
-          developerConnection = "${repositoryUrl}"
-          url = "${repositoryUrl}"
+          connection = "${projectUrl}"
+          developerConnection = "${projectUrl}"
+          url = "${projectUrl}"
         }
 
         licenses {
@@ -52,16 +51,35 @@ publishing {
       }
     }
   }
+  repositories {
+    mavenCentral {
+      url "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+      credentials {
+        username = project.findProperty("ossrhUsername")
+        password = project.findProperty("ossrhPassword")
+      }
+    }
+  }
 }
 
 nexusPublishing {
   repositories {
-    sonatype{
+    mavenCentral {
+//      nexusUrl = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
+//      snapshotRepositoryUrl = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
+      nexusUrl = uri("https://oss.sonatype.org/service/local/")
+      snapshotRepositoryUrl = uri("https://oss.sonatype.org/content/repositories/snapshots/")
       username = project.findProperty("ossrhUsername")
       password = project.findProperty("ossrhPassword")
     }
   }
 }
+
+//nexusStaging {
+//  packageGroup = 'com.mageddo'
+//  username = project.findProperty("ossrhUsername")
+//  password = project.findProperty("ossrhPassword")
+//}
 
 if (project.hasProperty("signing.keyId")) {
   apply plugin: 'signing'
